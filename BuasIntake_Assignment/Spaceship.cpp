@@ -2,6 +2,14 @@
 #include <cmath>
 #include <iostream>
 
+
+//TODO: Implement Health and Damage
+//TODO: Implement Shooting
+//TODO: Implement Collisions
+//TODO: Implement Scoring
+//TODO: Implement Game Over ( Lifes 3x then Game Over)
+//TODO: Implement Powerups (maybe if enough time)
+
 Spaceship::Spaceship():
 	speed(0.0f), x(GetScreenWidth() / 2), y(GetScreenHeight() / 2), velocityX(0.0f), velocityY(0.0f), scaleFactor(SCALE_FACTOR), rotation(0.0f), rotationRadians(0.0f)
 {
