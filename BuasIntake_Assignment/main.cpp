@@ -1,6 +1,6 @@
 #include <cstdio>
 
-#include "raylib.h"
+#include "../lib/raylib.h"
 #include "Spaceship.h"
 
 int main()
