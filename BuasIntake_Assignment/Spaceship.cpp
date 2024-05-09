@@ -13,7 +13,7 @@
 Spaceship::Spaceship():
 	speed(0.0f), x(GetScreenWidth() / 2), y(GetScreenHeight() / 2), velocityX(0.0f), velocityY(0.0f), scaleFactor(SCALE_FACTOR), rotation(0.0f), rotationRadians(0.0f)
 {
-	texture_spaceShip = LoadTexture("../assets/Spaceship/Spaceship-full-health.png");
+    texture_spaceShip = LoadTexture("../assets/Spaceship/Spaceship-full-health.png");
 	SetTextureFilter(texture_spaceShip, TEXTURE_FILTER_TRILINEAR); // Makes the texture smoother when upscaled
 }
 
@@ -35,8 +35,6 @@ void Spaceship::Update(float deltaTime)
     x += velocityX;
     y += velocityY;
 
-		
-    std::cout << "Position: (" << x << ", " << y << "), Rotation: " << rotation << std::endl;
 
     // Screen boundaries
     if (x < 0) 

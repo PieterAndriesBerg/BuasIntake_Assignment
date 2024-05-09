@@ -29,6 +29,6 @@ void AsteroidManager::SpawnAsteroid(Vector2 playerPosition)
 {
 	if (asteroids.size() < maxAsteroids)
 	{
-		asteroids.push_back(Asteroid(playerPosition));
+		asteroids.emplace_back(Asteroid(playerPosition));
 	}
 }
