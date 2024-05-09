@@ -1,6 +1,8 @@
 #include <cstdio>
-
-#include "../lib/raylib.h"
+#include <vector>
+#include "raylib.h"
+#include "Asteroid.h"
+#include "AsteroidManager.h"
 #include "Spaceship.h"
 
 int main()
@@ -14,38 +16,40 @@ int main()
 	SetTargetFPS(60);
 
 	// Load game objects here
-	Spaceship spaceship = Spaceship();
+	Spaceship spaceship;
+	AsteroidManager asteroidManager;
+
+	float asteroidSpawnTimer = 0.0f; // Timer to keep track of when to spawn an asteroid
+	float asteroidSpawnInterval = 2.0f; // Spawn an asteroid every 2 seconds
+	
 
 	//Game Loop
-	while(!WindowShouldClose())
-	{
+    while (!WindowShouldClose())
+    {
+        //Calculate delta time
+        float deltaTime = GetFrameTime();
 
-		//Calculate delta time
-		float deltaTime = GetFrameTime();
+        // Handle Input
+        spaceship.HandleInput(deltaTime);
 
-		BeginDrawing();
-		ClearBackground(backgroundColor);
-
-		// Handle Input
-		spaceship.HandleInput(deltaTime);
-
-
-		// Draw game objects here
-		spaceship.Draw();
+        // Update game objects here
+        spaceship.Update(deltaTime);
+		asteroidManager.Update(deltaTime, Vector2{ spaceship.x,spaceship.y });
 
 
-		// Update game objects here
-		spaceship.Update(deltaTime);
-		
+        // Drawing
+        BeginDrawing();
+        ClearBackground(backgroundColor);
 
-		
+        // Draw game objects here
+        spaceship.Draw();
+		asteroidManager.Draw();
+
+        EndDrawing();
+    }
 
 
-
-		EndDrawing();
-	}
-
-
+	spaceship.~Spaceship();
 	CloseWindow();
 	return 0;
 }

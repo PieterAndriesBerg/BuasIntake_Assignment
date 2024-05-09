@@ -13,13 +13,13 @@
 Spaceship::Spaceship():
 	speed(0.0f), x(GetScreenWidth() / 2), y(GetScreenHeight() / 2), velocityX(0.0f), velocityY(0.0f), scaleFactor(SCALE_FACTOR), rotation(0.0f), rotationRadians(0.0f)
 {
-	texture = LoadTexture("../assets/Spaceship/Spaceship-full-health.png");
-	SetTextureFilter(texture, TEXTURE_FILTER_TRILINEAR); // Makes the texture smoother when upscaled
+	texture_spaceShip = LoadTexture("../assets/Spaceship/Spaceship-full-health.png");
+	SetTextureFilter(texture_spaceShip, TEXTURE_FILTER_TRILINEAR); // Makes the texture smoother when upscaled
 }
 
 Spaceship::~Spaceship()
 {
-	UnloadTexture(texture);
+	UnloadTexture(texture_spaceShip);
 }
 
 void Spaceship::Update(float deltaTime)
@@ -43,18 +43,18 @@ void Spaceship::Update(float deltaTime)
     {
         x = 0;
     }
-    else if (x > GetScreenWidth() - texture.width) 
+    else if (x > GetScreenWidth() - texture_spaceShip.width) 
     {
-		x = GetScreenWidth() - texture.width;
+		x = GetScreenWidth() - texture_spaceShip.width;
     }
 
 	if (y < 0)
 	{
 		y = 0;
 	}
-	else if (y > GetScreenHeight() - texture.height)
+	else if (y > GetScreenHeight() - texture_spaceShip.height)
 	{
-		y = GetScreenHeight() - texture.height;
+		y = GetScreenHeight() - texture_spaceShip.height;
 	}
 
 }
@@ -62,19 +62,19 @@ void Spaceship::Update(float deltaTime)
 void Spaceship::Draw()
 {
     // Calculate the center of the texture
-    Vector2 origin = { texture.width / 2.0f * SCALE_FACTOR, texture.height / 2.0f * SCALE_FACTOR };
+    Vector2 origin = { texture_spaceShip.width / 2.0f * SCALE_FACTOR, texture_spaceShip.height / 2.0f * SCALE_FACTOR };
 
     // Define the source rectangle (use the entire texture)
-    Rectangle sourceRec = { 0.0f, 0.0f, static_cast<float>(texture.width), static_cast<float>(texture.height) };
+    Rectangle sourceRec = { 0.0f, 0.0f, static_cast<float>(texture_spaceShip.width), static_cast<float>(texture_spaceShip.height) };
 
     // Define the destination rectangle
-    Rectangle destRec = { x + origin.x, y + origin.y, texture.width * SCALE_FACTOR, texture.height * SCALE_FACTOR };
+    Rectangle destRec = { x + origin.x, y + origin.y, texture_spaceShip.width * SCALE_FACTOR, texture_spaceShip.height * SCALE_FACTOR };
 
     // Adjust rotation to match the sprite's orientation
     float adjustedRotation = rotation + 90.0f;
 
     // Draw the texture rotated around its center
-    DrawTexturePro(texture, sourceRec, destRec, origin, adjustedRotation, WHITE);
+    DrawTexturePro(texture_spaceShip, sourceRec, destRec, origin, adjustedRotation, WHITE);
 }
 
 void Spaceship::HandleInput(float deltaTime)

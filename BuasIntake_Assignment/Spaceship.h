@@ -1,5 +1,5 @@
 #pragma once
-#include "../lib/raylib.h"
+#include "raylib.h"
 class Spaceship
 {
 public:
@@ -8,7 +8,7 @@ public:
 	static constexpr float ACCELERATION = 25.0f;
 	static constexpr float DECELERATION = 0.95f;
 	static constexpr float MAX_SPEED = 100.0f;
-	static constexpr float SCALE_FACTOR = 1.2f;
+	static constexpr float SCALE_FACTOR = 1.9f;
 
 
 	// Attributes
@@ -20,7 +20,7 @@ public:
 	float scaleFactor;
 	float rotation;
 	float rotationRadians;
-	Texture2D texture;
+	Texture2D texture_spaceShip;
 
 	// Constructor
 	Spaceship();
