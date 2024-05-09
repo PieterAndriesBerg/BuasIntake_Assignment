@@ -7,8 +7,7 @@ public:
 	Vector2 position;
 	Vector2 velocity;
 	float size;
-	Texture2D texture_asteroid;
-
+	Texture2D texture;
 	Asteroid(Vector2 playerPosition);
 	~Asteroid();
 

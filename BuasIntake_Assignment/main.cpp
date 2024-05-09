@@ -15,6 +15,7 @@ int main()
 	InitWindow(windowWidth, windowHeight, "Spaceship Saviors: Asteroid Rescue");
 	SetTargetFPS(60);
 
+
 	// Load game objects here
 	Spaceship spaceship;
 	AsteroidManager asteroidManager;
@@ -49,7 +50,6 @@ int main()
     }
 
 
-	spaceship.~Spaceship();
 	CloseWindow();
 	return 0;
 }
